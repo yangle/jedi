@@ -156,7 +156,7 @@ def _try_to_load_stub(evaluator, import_names, python_context_set,
             pass
 
     # 1. Try to load foo-stubs folders on path for import name foo.
-    if len(import_names) == 1:
+    if False:  # if len(import_names) == 1:
         # foo-stubs
         for p in sys_path:
             init = os.path.join(p, *import_names) + '-stubs' + os.path.sep + '__init__.pyi'
@@ -170,7 +170,7 @@ def _try_to_load_stub(evaluator, import_names, python_context_set,
                 return m
 
     # 2. Try to load pyi files next to py files.
-    for c in python_context_set:
+    if False:  # for c in python_context_set:
         try:
             method = c.py__file__
         except AttributeError:
@@ -200,7 +200,7 @@ def _try_to_load_stub(evaluator, import_names, python_context_set,
         return m
 
     # 4. Try to load pyi file somewhere if python_context_set was not defined.
-    if not python_context_set:
+    if False:  # if not python_context_set:
         if parent_module_context is not None:
             try:
                 method = parent_module_context.py__path__
