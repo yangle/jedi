@@ -196,7 +196,7 @@ class ModuleValue(ModuleMixin, TreeValue):
             return None
 
         # A namespace package is typically auto generated and ~10 lines long.
-        first_few_lines = ''.join(self.code_lines[:50])
+        first_few_lines = ''.join(self.code_lines[:1000])
         # these are strings that need to be used for namespace packages,
         # the first one is ``pkgutil``, the second ``pkg_resources``.
         options = ('declare_namespace(__name__)', 'extend_path(__path__')
