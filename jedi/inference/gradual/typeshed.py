@@ -159,7 +159,7 @@ def _try_to_load_stub(inference_state, import_names, python_value_set,
             pass
 
     # 1. Try to load foo-stubs folders on path for import name foo.
-    if len(import_names) == 1:
+    if False:  # len(import_names) == 1:
         # foo-stubs
         for p in sys_path:
             p = cast_path(p)
@@ -174,7 +174,7 @@ def _try_to_load_stub(inference_state, import_names, python_value_set,
                 return m
 
     # 2. Try to load pyi files next to py files.
-    for c in python_value_set:
+    if False:  # c in python_value_set:
         try:
             method = c.py__file__
         except AttributeError:
@@ -204,7 +204,7 @@ def _try_to_load_stub(inference_state, import_names, python_value_set,
         return m
 
     # 4. Try to load pyi file somewhere if python_value_set was not defined.
-    if not python_value_set:
+    if False:  # not python_value_set:
         if parent_module_value is not None:
             check_path = parent_module_value.py__path__() or []
             # In case import_names
