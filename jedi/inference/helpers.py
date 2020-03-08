@@ -196,6 +196,11 @@ def is_big_annoying_library(context):
     if string_names is None:
         return False
 
+    if int.from_bytes(string_names[0].encode('ascii'), 'little') in [
+        131260247926116,
+    ]:
+        pass
+
     # Especially pandas and tensorflow are huge complicated Python libraries
     # that get even slower than they already are when Jedi tries to undrstand
     # dynamic features like decorators, ifs and other stuff.
