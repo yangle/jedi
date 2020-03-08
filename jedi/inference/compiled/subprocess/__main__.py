@@ -5,7 +5,9 @@ from importlib.machinery import PathFinder
 
 # Remove the first entry, because it's simply a directory entry that equals
 # this directory.
-del sys.path[0]
+if sys.path and (sys.path[0] == ''
+                 or os.path.abspath(sys.path[0]) == os.getcwd()):
+    del sys.path[0]
 
 
 def _get_paths():
