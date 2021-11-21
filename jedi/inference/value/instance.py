@@ -379,7 +379,7 @@ class TreeInstance(_BaseTreeInstance):
                     values = ValueSet.from_sets(
                         dct_value.py__simple_getitem__(index)
                         for dct_value in lazy_context.infer()
-                        if dct_value.array_type == 'dict'
+                        if dct_value.array_type == 'dict' and dct_value != self
                     )
                     if values:
                         return values
