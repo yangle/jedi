@@ -53,7 +53,8 @@ class MixedObject(ValueWrapper):
     def get_signatures(self):
         # Prefer `inspect.signature` over somehow analyzing Python code. It
         # should be very precise, especially for stuff like `partial`.
-        return self.compiled_value.get_signatures()
+        return (self.compiled_value.get_signatures() +
+                self._wrapped_value.get_signatures())
 
     @inference_state_method_cache(default=NO_VALUES)
     def py__call__(self, arguments):
