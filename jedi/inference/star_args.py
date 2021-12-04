@@ -105,6 +105,14 @@ def process_params(param_names, star_count=3):  # default means both * and **
             yield from param_names
             return
 
+        # An infinite recursion would take more than a few seconds before
+        # hitting a RecursionError. Bail early and speculatively to avoid
+        # holding up signature display.
+        import inspect
+        if len(inspect.stack(0)) > 30:
+            yield from param_names
+            return
+
     used_names = set()
     arg_callables = []
     kwarg_callables = []
