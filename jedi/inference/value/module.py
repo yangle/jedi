@@ -43,9 +43,12 @@ class SubModuleDictMixin:
         """
         names = {}
         if self.is_package():
-            mods = self.inference_state.compiled_subprocess.iter_module_names(
-                self.py__path__()
-            )
+            try:
+                mods = (self.inference_state.compiled_subprocess
+                        .iter_module_names(self.py__path__()))
+            except Exception:  # e.g., PermissionError
+                mods = []
+
             for name in mods:
                 # It's obviously a relative import to the current module.
                 names[name] = SubModuleName(self.as_context(), name)
