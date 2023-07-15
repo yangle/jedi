@@ -393,7 +393,7 @@ class Completion:
             if v.is_module():
                 if len(v.string_names) == 1:
                     module_name = v.string_names[0]
-                    if module_name in ('numpy', 'tensorflow', 'matplotlib', 'pandas'):
+                    if module_name in ('numpy', 'tensorflow', 'matplotlib', 'pandas', 'dask', 'torch'):
                         cached_name = module_name
 
         return cached_name, self._complete_trailer_for_values(values)

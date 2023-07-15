@@ -204,4 +204,4 @@ def is_big_annoying_library(context):
     # Especially pandas and tensorflow are huge complicated Python libraries
     # that get even slower than they already are when Jedi tries to undrstand
     # dynamic features like decorators, ifs and other stuff.
-    return string_names[0] in ('pandas', 'numpy', 'tensorflow', 'matplotlib')
+    return string_names[0] in ('pandas', 'numpy', 'tensorflow', 'matplotlib', 'dask', 'torch')
