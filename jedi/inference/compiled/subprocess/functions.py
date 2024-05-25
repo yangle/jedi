@@ -2,6 +2,7 @@ import sys
 import os
 import inspect
 import importlib
+import warnings
 from pathlib import Path
 from zipfile import ZipFile
 from zipimport import zipimporter, ZipImportError
@@ -18,7 +19,10 @@ def get_sys_path():
 
 
 def load_module(inference_state, **kwargs):
-    return access.load_module(inference_state, **kwargs)
+    # Suppress import-time warnings.
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        return access.load_module(inference_state, **kwargs)
 
 
 def get_compiled_method_return(inference_state, id, attribute, *args, **kwargs):
